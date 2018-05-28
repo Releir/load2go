@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="default" extends="struts-default">
+	
+		<action name="loginAct" class="com.actions.LoginAction">
+			<result name="error">/login.jsp</result>
+			<result name="success" type="redirect">
+				<param name="location">redirect</param>
+  				<param name="parse">false</param>
+			</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="redirect" class="com.actions.HomepageRedirect">
+			<result name="success">/homepage.jsp</result>
+			
+		</action>
+		<action name="logoutAct" class="com.actions.LogoutAction">
+			<result name="error">/index.jsp</result>
+			<result name="success">/index.jsp</result>
+			
+		</action>
+		<action name="register" class="com.actions.RegistrationAction">
+			<result name="error">/register.jsp</result>
+			<result name="success">/activationstatus.jsp</result>
+			
+		</action>
+		<action name="activate" class="com.actions.Activation">
+			<result name="success">/accountActivated.jsp</result>
+			
+		</action>
+		<action name="feedback" class="com.actions.FeedBack">
+			<result name="success">/feedbackthanks.jsp</result>
+		</action>
+		<action name="prefix" class="com.actions.Prefixes">
+			<result name="success">/prefixes.jsp</result>
+		</action>
+		
+		<action name="transaction_purchase" class="com.actions.TransactionSummary">
+			<result name="error">/prefixes.jsp</result>
+			<result name="success">/transaction_purchase.jsp</result>
+			
+		</action>
+		<action name="process_claim" class="com.actions.Rewards">
+			<result name="success">/processClaimingReward.jsp</result>
+			
+		</action>
+		<action name="transact" class="com.actions.Transaction">
+			<result name="success" type="redirect">
+				<param name="location">redirectComplete</param>
+  				<param name="parse">false</param>
+			</result>
+			<result name="error">/reload_cc.jsp</result>
+			
+		</action>
+		<action name="claim" class="com.actions.ClaimRewards">
+			<result name="success" type="redirect">
+				<param name="location">redirectComplete</param>
+  				<param name="parse">false</param>
+			</result>
+			
+		</action>
+		<action name="reloadcc" class="com.actions.ReloadCC">
+			<result name="success">/reload_cc.jsp</result>
+			
+		</action>
+		<action name="reloadpp" class="com.actions.ReloadPayPal">
+			<result name="success">/reload_paypal.jsp</result>
+		</action>
+		
+		<action name="forgotPass" class="com.actions.ForgotPassAction">
+			<result name="success" type="redirect">
+				/sentcode.jsp
+			</result>
+			<result name="error">/forgotpass.jsp</result>
+		</action>
+		
+		<action name="resetPass" class="com.actions.ResettingPassAction">
+			<result name="success" type="redirect">
+				/successreset.jsp
+			</result>
+			<result name="error">/resetPass.jsp</result>
+		</action>
+		<action name="redirectComplete" class="com.actions.HomepageRedirect">
+			<result name="success">/hompagesuccestransact.jsp</result>
+		</action>
+	</package>
+</struts>
